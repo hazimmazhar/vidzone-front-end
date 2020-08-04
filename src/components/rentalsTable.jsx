@@ -5,15 +5,11 @@ import { Link } from "react-router-dom";
 
 class RentalsTable extends Component {
   columns = [
-    // {
-    //   path: "title",
-    //   label: "Title",
-    //   content: (movie) => (
-    //     <Link to={`/movies/${movie._id}`}>{movie.title} </Link>
-    //   ),
-    // },
     { path: "customer.name", label: "Customer" },
     { path: "movie.title", label: "Movie" },
+    { path: "dateOut", label: "Date of Rentout" },
+    { path: "dateReturned", label: "Reurn Date" },
+    { path: "rentalFee", label: "Total Fee" },
   ];
 
   deleteColumn = {

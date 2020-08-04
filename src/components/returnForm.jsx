@@ -3,11 +3,11 @@ import Joi from "joi-browser";
 import Form from "./common/form";
 import { getMovies } from "./../services/movieService";
 import { getCustomers } from "./../services/customerService";
-import { saveRental } from "./../services/rentalService";
-import * as auth from "../services/authService";
+import { saveReturn } from "./../services/returnService";
 import { toast } from "react-toastify";
+import * as auth from "../services/authService";
 
-class RentalForm extends Form {
+class ReturnForm extends Form {
   state = {
     data: { customerId: "", movieId: "" },
     customers: [],
@@ -46,11 +46,13 @@ class RentalForm extends Form {
 
   doSubmit = async () => {
     try {
-      await saveRental(this.state.data);
+      await saveReturn(this.state.data);
       this.props.history.push("/rentals");
     } catch (ex) {
       if (ex.response && ex.response.status === 400)
-        toast.error("Rental already exists");
+        toast.error("Return already processed");
+      else if (ex.response && ex.response.status === 404)
+        toast.error("Rental not found.");
     }
   };
 
@@ -59,7 +61,7 @@ class RentalForm extends Form {
     if (user && user.isAdmin) {
       return (
         <div className="container mt-5">
-          <h1>Rental Form</h1>
+          <h1>Return Form</h1>
           <form onSubmit={this.handleSubmit}>
             {this.renderSelect("customerId", "Customer", this.state.customers)}
             {this.renderSelect("movieId", "Movie", this.state.movies)}
@@ -77,20 +79,4 @@ class RentalForm extends Form {
   }
 }
 
-export default RentalForm;
-
-// const MovieForm = ({ match, history }) => {
-//   return (
-//     <div>
-//       <h1>MovieForm {match.params.id} </h1>
-//       <button
-//         className="btn btn-primary"
-//         onClick={() => history.push("/movies")}
-//       >
-//         Save
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default MovieForm;
+export default ReturnForm;

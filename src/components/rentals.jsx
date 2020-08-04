@@ -83,9 +83,14 @@ class Rentals extends Component {
         <div className="row">
           <div className="col">
             {user && (
-              <Link to="/rentals/new" className="btn btn-primary mb-2">
-                New Rental
-              </Link>
+              <React.Fragment>
+                <Link to="/rentals/new" className="btn btn-primary mb-2">
+                  New Rental
+                </Link>
+                <Link to="/returns/new" className="btn btn-primary mb-2 ml-2">
+                  Return Movie
+                </Link>
+              </React.Fragment>
             )}
             <p>Showing {totalCount} in the database</p>
             <SearchBox value={searchQuery} onChange={this.handleSearch} />

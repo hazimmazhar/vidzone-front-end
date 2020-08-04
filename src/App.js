@@ -15,6 +15,7 @@ import Home from "./components/home";
 import auth from "./services/authService";
 import CustomerForm from "./components/customerForm";
 import RentalForm from "./components/rentalForm";
+import ReturnForm from "./components/returnForm";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -37,11 +38,12 @@ class App extends Component {
             <Route path="/movies/new" component={MovieForm} />
             <Route path="/customers/new" component={CustomerForm} />
             <Route path="/rentals/new" component={RentalForm} />
+            <Route path="/returns/new" component={ReturnForm} />
+            <ProtectedRoute path="/movies/:id" component={MovieForm} />
+            <ProtectedRoute path="/customers/:id" component={CustomerForm} />
             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={Logout} />
-            <ProtectedRoute path="/movies/:id" component={MovieForm} />
-            <ProtectedRoute path="/customers/:id" component={CustomerForm} />
             <Route
               path="/movies"
               render={(props) => <Movies {...props} user={user} />}
