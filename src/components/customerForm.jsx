@@ -6,7 +6,7 @@ import * as auth from "./../services/authService";
 
 class CustomerForm extends Form {
   state = {
-    data: { name: "", phone: "" },
+    data: { name: "", phone: "", email: "", address: "" },
     errors: {},
   };
 
@@ -14,6 +14,8 @@ class CustomerForm extends Form {
     _id: Joi.string(),
     name: Joi.string().min(5).max(255).required().label("Name"),
     phone: Joi.string().min(5).max(255).required().label("Phone"),
+    email: Joi.string().email().min(5).max(255).required().label("Email"),
+    address: Joi.string().min(5).max(255).required().label("Address"),
   };
 
   async populateCustomer() {
@@ -37,6 +39,8 @@ class CustomerForm extends Form {
       _id: customer._id,
       name: customer.name,
       phone: customer.phone,
+      email: customer.email,
+      address: customer.address,
     };
   }
 
@@ -54,6 +58,8 @@ class CustomerForm extends Form {
           <form onSubmit={this.handleSubmit}>
             {this.renderInput("name", "Name")}
             {this.renderInput("phone", "Phone")}
+            {this.renderInput("email", "Email")}
+            {this.renderInput("address", "Address")}
             {this.renderButton("Save")}
           </form>
         </div>
@@ -69,19 +75,3 @@ class CustomerForm extends Form {
 }
 
 export default CustomerForm;
-
-// const MovieForm = ({ match, history }) => {
-//   return (
-//     <div>
-//       <h1>MovieForm {match.params.id} </h1>
-//       <button
-//         className="btn btn-primary"
-//         onClick={() => history.push("/movies")}
-//       >
-//         Save
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default MovieForm;

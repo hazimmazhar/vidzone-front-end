@@ -9,6 +9,7 @@ import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
 import MoviesTable from "./moviesTable";
 import SearchBox from "./searchBox";
+import Banner from "./common/banner";
 
 class Movies extends Component {
   state = {
@@ -39,14 +40,6 @@ class Movies extends Component {
         toast.error("Movie has already been deleted");
       this.setState({ movies: originalMovies });
     }
-  };
-
-  handleLike = (movie) => {
-    const movies = [...this.state.movies];
-    const index = movies.indexOf(movie);
-    movies[index] = { ...movies[index] };
-    movies[index].liked = !movies[index].liked;
-    this.setState({ movies });
   };
 
   handlePageChange = (page) => {
@@ -102,43 +95,45 @@ class Movies extends Component {
     const { totalCount, data: movies } = this.getPagedData();
 
     return (
-      <div className="container mt-5">
-        <div className="text-center mb-5" id="menu-headings">
-          <h3>Movies</h3>
-          <h4>Collection</h4>
-        </div>
-        <div className="row">
-          <div className="col-3">
-            <ListGroup
-              items={this.state.genres}
-              selectedItem={this.state.selectedGenre}
-              onItemsSelect={this.handleGenreSelect}
-            />
+      <React.Fragment>
+        <Banner />
+        <div className="container mt-5">
+          <div className="text-center mb-5" id="menu-headings">
+            <h3>Movies</h3>
+            <h4>Collection</h4>
           </div>
-          <div className="col">
-            {user && (
-              <Link to="/movies/new" className="btn btn-primary mb-2">
-                New Movie
-              </Link>
-            )}
-            <p>Showing {totalCount} in the database</p>
-            <SearchBox value={searchQuery} onChange={this.handleSearch} />
-            <MoviesTable
-              movies={movies}
-              sortColumn={sortColumn}
-              onLike={this.handleLike}
-              onDelete={this.handleDelete}
-              onSort={this.handleSort}
-            />
-            <Pagination
-              itemsCount={totalCount}
-              pageSize={pageSize}
-              currentPage={currentPage}
-              onPageChange={this.handlePageChange}
-            />
+          <div className="row">
+            <div className="col-3">
+              <ListGroup
+                items={this.state.genres}
+                selectedItem={this.state.selectedGenre}
+                onItemsSelect={this.handleGenreSelect}
+              />
+            </div>
+            <div className="col">
+              {user && (
+                <Link to="/movies/new" className="btn btn-primary mb-2">
+                  New Movie
+                </Link>
+              )}
+              <p>Showing {totalCount} in the database</p>
+              <SearchBox value={searchQuery} onChange={this.handleSearch} />
+              <MoviesTable
+                movies={movies}
+                sortColumn={sortColumn}
+                onDelete={this.handleDelete}
+                onSort={this.handleSort}
+              />
+              <Pagination
+                itemsCount={totalCount}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChange={this.handlePageChange}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

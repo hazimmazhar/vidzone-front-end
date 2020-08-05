@@ -1,6 +1,20 @@
 import http from "./httpServices";
 import { apiUrl } from "../config.json";
 
+const apiEndPoint = apiUrl + "/genres";
+
 export function getGenres() {
-  return http.get(apiUrl + "/genres");
+  return http.get(apiEndPoint);
+}
+
+function GenreUrl(id) {
+  return `${apiEndPoint}/${id}`;
+}
+
+export function saveGenre(genre) {
+  return http.post(apiEndPoint, genre);
+}
+
+export function deleteGenre(genreId) {
+  return http.delete(GenreUrl(genreId));
 }

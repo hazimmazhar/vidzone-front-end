@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
 class Home extends Component {
@@ -11,7 +10,7 @@ class Home extends Component {
             <div className="container" style={{ marginTop: "80px" }}>
               <div className="row">
                 <div className="col">
-                  <img src={logo} alt="" className="d-block" />
+                  <img src="/img/logo.png" alt="" className="d-block" />
                   <span style={{ fontSize: "18px", fontWeight: "400" }}>
                     THE BEST MOVIE RENTAL SHOP IN TOWN
                   </span>

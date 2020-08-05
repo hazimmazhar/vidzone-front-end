@@ -26,6 +26,7 @@ class MovieForm extends Form {
       .min(0)
       .max(10)
       .label("Daily Rental Rate"),
+    imdbRating: Joi.number().required().min(1).max(10).label("IMDB Rating"),
   };
 
   async populateGenres() {
@@ -57,6 +58,7 @@ class MovieForm extends Form {
       genreId: movie.genre._id,
       numberInStock: movie.numberInStock,
       dailyRentalRate: movie.dailyRentalRate,
+      imdbRating: movie.imdbRating,
     };
   }
 
@@ -76,6 +78,7 @@ class MovieForm extends Form {
             {this.renderSelect("genreId", "Genre", this.state.genres)}
             {this.renderInput("numberInStock", "Number In Stock", "number")}
             {this.renderInput("dailyRentalRate", "Rate")}
+            {this.renderInput("imdbRating", "IMDB Rating")}
             {this.renderButton("Save")}
           </form>
         </div>
@@ -91,19 +94,3 @@ class MovieForm extends Form {
 }
 
 export default MovieForm;
-
-// const MovieForm = ({ match, history }) => {
-//   return (
-//     <div>
-//       <h1>MovieForm {match.params.id} </h1>
-//       <button
-//         className="btn btn-primary"
-//         onClick={() => history.push("/movies")}
-//       >
-//         Save
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default MovieForm;

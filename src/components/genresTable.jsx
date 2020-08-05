@@ -1,27 +1,20 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import auth from "../services/authService";
 import Table from "./common/table";
 
-class CustomersTable extends Component {
+class GenresTable extends Component {
   columns = [
     {
       path: "name",
       label: "Name",
-      content: (customer) => (
-        <Link to={`/customers/${customer._id}`}>{customer.name} </Link>
-      ),
     },
-    { path: "phone", label: "Phone" },
-    { path: "email", label: "Email" },
-    { path: "address", label: "Address" },
   ];
 
   deleteColumn = {
     key: "delete",
-    content: (customer) => (
+    content: (genre) => (
       <button
-        onClick={() => this.props.onDelete(customer)}
+        onClick={() => this.props.onDelete(genre)}
         className="btn btn-danger"
       >
         Delete
@@ -38,17 +31,17 @@ class CustomersTable extends Component {
   }
 
   render() {
-    const { customers, onSort, sortColumn } = this.props;
+    const { genres, onSort, sortColumn } = this.props;
 
     return (
       <Table
         columns={this.columns}
         sortColumn={sortColumn}
-        data={customers}
+        data={genres}
         onSort={onSort}
       />
     );
   }
 }
 
-export default CustomersTable;
+export default GenresTable;

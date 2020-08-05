@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../../img/logo.png";
 import { NavLink, Link } from "react-router-dom";
 
 const NavBar = ({ user }) => {
@@ -8,7 +7,7 @@ const NavBar = ({ user }) => {
       <nav className="navbar navbar-expand-sm navbar-dark sticky-top">
         <div className="container">
           <Link className="navbar-brand" to="/home">
-            <img src={logo} width="80" height="80" alt="Logo" />
+            <img src="/img/logo.png" width="80" height="80" alt="Logo" />
           </Link>
           <button
             className="navbar-toggler"
@@ -28,6 +27,9 @@ const NavBar = ({ user }) => {
               </NavLink>
               <NavLink className="nav-item nav-link" to="/movies">
                 Movies
+              </NavLink>
+              <NavLink className="nav-item nav-link" to="/genres">
+                Genres
               </NavLink>
               <NavLink className="nav-item nav-link" to="/customers">
                 Customers
