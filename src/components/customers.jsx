@@ -70,13 +70,8 @@ class Movies extends Component {
   };
 
   render() {
-    const { length: count } = this.state.customers;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
-
-    if (count === 0) {
-      return <p>There are no customers in the database</p>;
-    }
 
     const { totalCount, data: customers } = this.getPagedData();
 

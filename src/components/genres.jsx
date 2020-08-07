@@ -70,13 +70,8 @@ class Genres extends Component {
   };
 
   render() {
-    const { length: count } = this.state.genres;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
-
-    if (count === 0) {
-      return <p>There are no genres in the database</p>;
-    }
 
     const { totalCount, data: genres } = this.getPagedData();
 

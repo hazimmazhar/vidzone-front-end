@@ -68,13 +68,8 @@ class Rentals extends Component {
   };
 
   render() {
-    const { length: count } = this.state.rentals;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
-
-    if (count === 0) {
-      return <p>There are no rentals in the database</p>;
-    }
 
     const { totalCount, data: rentals } = this.getPagedData();
 
