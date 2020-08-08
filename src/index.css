@@ -61,10 +61,19 @@ code {
   padding-bottom: 100px;
 }
 
-.banner-section {
-  background: url(/img/avengers-i-cover.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 500px;
-  position: relative;
+.about {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
+
+.about hr {
+  background-color: gray;
+}
+
+.about h1 {
+  font-size: 80px;
+  margin-top: 20px;
+  color: #007bff;
+  text-underline-position: below;
+}
+

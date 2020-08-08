@@ -19,6 +19,7 @@ import ReturnForm from "./components/returnForm";
 import GenreForm from "./components/genreForm";
 import Genres from "./components/genres";
 import Footer from "./components/common/footer";
+import About from "./components/about";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -36,7 +37,7 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <NavBar user={user} />
-        <main className="mb-5">
+        <main>
           <Switch>
             <Route path="/movies/new" component={MovieForm} />
             <Route path="/genres/new" component={GenreForm} />
@@ -64,6 +65,7 @@ class App extends Component {
               path="/genres"
               render={(props) => <Genres {...props} user={user} />}
             />
+            <Route path="/about" component={About} />
             <Route path="/home" component={Home} />
             <Route path="/not-found" component={NotFound} />
             <Redirect from="/" exact to="/home" />

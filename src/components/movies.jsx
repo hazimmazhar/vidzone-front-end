@@ -15,6 +15,7 @@ class Movies extends Component {
   state = {
     movies: [],
     genres: [],
+    bannerImg: "/img/avengers-i-cover.jpg",
     currentPage: 1,
     pageSize: 4,
     searchQuery: "",
@@ -84,14 +85,20 @@ class Movies extends Component {
   };
 
   render() {
-    const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
+    const {
+      pageSize,
+      currentPage,
+      sortColumn,
+      searchQuery,
+      bannerImg,
+    } = this.state;
     const { user } = this.props;
 
     const { totalCount, data: movies } = this.getPagedData();
 
     return (
       <React.Fragment>
-        <Banner />
+        <Banner backgroundImg={bannerImg} />
         <div className="container mt-5">
           <div className="text-center mb-5" id="menu-headings">
             <h3>Movies</h3>
